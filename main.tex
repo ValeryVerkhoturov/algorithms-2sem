@@ -19,7 +19,7 @@
 \usepackage{icomma} % Убрать расстояние у запятой между цифрами
 
 \usepackage{hyperref}
-\hypersetup{pdftitle={Алгоритмы численных методов. Самостоятельные работы}, pdfauthor={Верхотуров В.С.}}
+\hypersetup{pdftitle={Алгоритмы численных методов. Самостоятельные работы}, pdfauthor={Верхотуров В.С.}, colorlinks=false, pdfborder={0 0 0}}
 
 \title{Алгоритмы численных методов. \\ Самостоятельные работы}
 \author{Верхотуров В.С.}
@@ -27,7 +27,7 @@
 \affil{РТУ МИРЭА}
 \date\today
 
-\newcommand*{\hm}[1]{#1\nobreak\discretionary{}{\hbox{$\mathsurround=0pt #1$}}{}} % перенос символа
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}{\hbox{$\mathsurround=0pt #1$}}{}} % Дублирование математического оператора при переносе выражения на новую строку
 
 
 \begin{document}
@@ -36,7 +36,7 @@
 \tableofcontents
 \newpage
 
-\section{Самостоятельная работа \textnumero 1}
+\section{Самостоятельная работа \textnumero 1. Решение нелинейных уравнений и систем линейных уравнений}
 
 \subsection{Задача 1}
 
@@ -419,22 +419,67 @@ x_1 &= \frac{11+4\times_2-x_3}{-3}=\frac{11+4\times\frac{68}{29}-\frac{568}{29}}
     \end{cases}
 \end{equation*}
 
-\section{Самостоятельная работа \textnumero 2}
+\section{Самостоятельная работа \textnumero 2. Построение интерполяционных многочленов}
 
 \subsection*{Приближение функции}
 
 Необходимо найти приближение функции, заданной в точках, многочленом, значения которого совпадают со значениями функции в указанных точках:
 
 \begin{center}
-    \begin{tabular}{c|c}
-        x & y \\ \hline
-        1 & 6 \\
-        3 & 10 \\
-        5 & 8 \\
-        7 & 12 \\
-        9 & 14
+    \begin{tabular}{|c|c|c|c|c|c|}
+         \hline
+         x & 1 & 3 & 5 & 7 & 9 \\ \hline
+         y & 6 & 10 & 8 & 12 & 14 \\
+         \hline
     \end{tabular}
 \end{center}
 
+Расчет разностей табличной функции:
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|}
+         \hline
+         x & y & $\Delta y$ & $\Delta^2 y$ & $\Delta^3 y$ & $\Delta^4 y$  \\ \hline
+         
+         \begin{tabular}{c}
+              1  \\ 3 \\ 5 \\ 7 \\ 9
+         \end{tabular}
+         &
+         \begin{tabular}{c}
+              6 \\ 10 \\ 8 \\ 12 \\ 14
+         \end{tabular}
+         &
+         \begin{tabular}{c}
+              4 \\ -2 \\ 4 \\ 2
+         \end{tabular}
+         &
+         \begin{tabular}{c}
+              -6 \\ 6 \\ -2
+         \end{tabular}
+         &
+         \begin{tabular}{c}
+              12 \\ -8
+         \end{tabular}
+         &
+         20 \\ 
+         \hline
+         
+    \end{tabular}
+\end{center}
+
+Узлы интерполяции равноотстоящие, т.к. $h = 3-1 = 5-3 = 7-5 \hm = 9-7 = 2 = const$.
+
+1-я интерполяционная формула Ньютона:
+\begin{multline*}
+P_n(x) = 
+y_0 +
+\frac{\Delta y_0}{1!h}(x-x_0) +
+\frac{\Delta^2 y_0}{2!h^2}(x-x_0)(x-x_1) +
+\dots + \\ +
+\frac{\Delta^n y_0}{n!h^n}(x-x_0)(x-x_1)\dots(x-x_{n-1}) .
+\end{multline*}
+
+\section{Самостоятельная работа \textnumero 3. Вычисление определенных интегралов}
+
+\section{Самостоятельная работа \textnumero 4. Решение обыкновенных дифференциальных уравнений}
 
 \end{document}
