@@ -33,6 +33,8 @@
 
 \newcommand*{\hm}[1]{#1\nobreak\discretionary{}{\hbox{$\mathsurround=0pt #1$}}{}} % Дублирование математического оператора при переносе выражения на новую строку
 
+\newcolumntype{C}{>{$}c<{$}}
+
 
 \begin{document}
 
@@ -58,7 +60,7 @@
 Дано уравнение $x^2\exp(x)-6=0$.
 \begin{enumerate}
     \item Построить график левой части уравнения;
-    \item найти приближенное решение методом простой итерации, $\varepsilon=10^{-6}$
+    \item найти приближенное решение методом простой итерации, $\varepsilon=10^{-6}$.
 \end{enumerate}
 
 \subsubsection*{Задача 3}
@@ -75,10 +77,10 @@
 \begin{enumerate}
     \item Найти приближение функции, заданной в точках, многочленом, значения которого совпадают со значениями функции в указанных точках:
     \begin{center}
-         \begin{tabular}{|c|c|c|c|c|c|}
+         \begin{tabular}{|C|C|C|C|C|C|}
              \hline
              x & 1 & 3 & 5 & 7 & 9 \\ \hline
-             y & $0+6$ & $4+6$ & $2+6$ & $6+6$ & $8+6$ \\
+             y & 0+6 & 4+6 & 2+6 & 6+6 & 8+6 \\
              \hline
          \end{tabular}
     \end{center}
@@ -142,6 +144,7 @@ x &= \frac{-b\pm\sqrt{D}}{2a},
 \end{figure}
 
 \subsubsection*{Приближенное значение левого корня методом половинного деления}
+
 Необходимо найти приближенное значение левого корня $5x^2+2x-6=0$ методом половинного деления с точностью $\varepsilon=10^{-3}$.
 
 По графику на рис.~\ref{sr1Task1Function} можно предположить, что значение левого корня находится на интервале $[-1,5;-1]$. $f(-1,5)=2,25$, $f(-1)=-3$. $f(x_0)f(x_1) \hm =2,25\times(-3)=-6,75\leq0$, следовательно промежуток действительно содержит хотя бы один корень. Для первой итерации: $x_0=-1,5$, $x_1=-1$.
@@ -150,29 +153,31 @@ x &= \frac{-b\pm\sqrt{D}}{2a},
 $$x_2=\frac{1}{2}(x_0+x_1).$$
 
 \begin{center}
-    \begin{tabular}{|c|c|c|c|c|c|c|c|}
-        \hline
-        $x_0$ & $x_1$ & $x_2$ & $f(x_0)$ & $f(x_1)$ & $f(x_2)$ & $f(x_0)f(x_2)$ & $f(x_1)f(x_2)$ \\ \hline
+    \resizebox{\textwidth}{!}{
+        \begin{tabular}{|C|C|C|C|C|C|C|C|}
+            \hline
+            x_0 & x_1 & x_2 & f(x_0) & f(x_1) & f(x_2) & f(x_0)f(x_2) & f(x_1)f(x_2) \\ \hline
         
-        -1,5 & -1 & -1,25 &	2,25 & -3 & -0,6875 & -1,546875 & 2,0625 \\ \hline
+            -1,5 & -1 & -1,25 &	2,25 & -3 & -0,6875 & -1,546875 & 2,0625 \\ \hline
         
-        -1,5 & -1,25 & -1,375 & 2,25 &	-0,6875	& 0,7031 & 1,581975 & -0,48338125 \\ \hline
+            -1,5 & -1,25 & -1,375 & 2,25 &	-0,6875	& 0,7031 & 1,581975 & -0,48338125 \\ \hline
         
-        -1,25 & -1,375 & -1,3125 & -0,6875 & 0,7031 & -0,0117 & 0,00804375 & -0,00822627 \\ \hline
+            -1,25 & -1,375 & -1,3125 & -0,6875 & 0,7031 & -0,0117 & 0,00804375 & -0,00822627 \\ \hline
         
-        -1,375 & -1,3125 & -1,3438 & 0,7031 & -0,0117 &	0,3414 & 0,24003834 & -0,00399438 \\ \hline
+            -1,375 & -1,3125 & -1,3438 & 0,7031 & -0,0117 &	0,3414 & 0,24003834 & -0,00399438 \\ \hline
         
-        -1,3125 & -1,3438 & -1,3282 & -0,0117 & 0,3414 & 0,1642 & -0,00192114 &	0,05605788 \\ \hline
+            -1,3125 & -1,3438 & -1,3282 & -0,0117 & 0,3414 & 0,1642 & -0,00192114 &	0,05605788 \\ \hline
         
-        -1,3125 & -1,3282 & -1,3204 & -0,0117 & 0,1642 & 0,0765 & -0,00089505 & 0,0125613 \\ \hline
+            -1,3125 & -1,3282 & -1,3204 & -0,0117 & 0,1642 & 0,0765 & -0,00089505 & 0,0125613 \\ \hline
         
-        -1,3125 & -1,3204 & -1,3165 & -0,0117 & 0,0765 & 0,0329 & -0,00038493 & 0,00251685 \\ \hline
+            -1,3125 & -1,3204 & -1,3165 & -0,0117 & 0,0765 & 0,0329 & -0,00038493 & 0,00251685 \\ \hline
         
-        -1,3125 & -1,3165 & -1,3145 & -0,0117 & 0,0329 & 0,0106 & -0,00012402 & 0,00034874 \\ \hline
+            -1,3125 & -1,3165 & -1,3145 & -0,0117 & 0,0329 & 0,0106 & -0,00012402 & 0,00034874 \\ \hline
         
-        -1,3125 & -1,3145 & -1,3135 & -0,0117 & 0,0106 & -0,0006 & 0,00000702 & -0,00000636 \\ \hline
+            -1,3125 & -1,3145 & -1,3135 & -0,0117 & 0,0106 & -0,0006 & 0,00000702 & -0,00000636 \\ \hline
         
-    \end{tabular}
+        \end{tabular}
+    }
 \end{center}
 
 Функции\footnote{представлены формулы для строки 3} электронной таблицы\footnote{Google Sheets}:
@@ -212,7 +217,7 @@ $$x_2=\frac{1}{2}(x_0+x_1).$$
 %$$x=x_0=0.$$
 По рис.~\ref{sr1Task1Function} начальное приближение к правому корню $x_0=0$.
 
-Итерационная формула: $$x_{k+1}=x_k-\frac{f(x_k)}{f'(x_k)}.$$
+Итерационная формула: $$x_{k+1}=x_k-\frac{f(x_k)}{f'(x_k)} .$$
 
 Нахождение производной $f(x)$:
 \begin{align*}
@@ -221,9 +226,9 @@ f'(x) &= 10x+2.
 \end{align*}
 
 \begin{center}
-    \begin{tabular}{|c|c|c|c|}
+    \begin{tabular}{|C|C|C|C|}
         \hline
-        $x_k$ & $f(x_k)$ & $f'(x_k)$ & $x_{k+1}$ \\ \hline
+        x_k & f(x_k) & f'(x_k) & x_{k+1} \\ \hline
         
         0 & -6 & 2 & 3 \\ \hline
         
@@ -289,9 +294,9 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 \end{align*}
 
 \begin{center}
-    \begin{tabular}{|c|c|c|c|}
+    \begin{tabular}{|C|C|C|C|}
         \hline
-        $x_k$ & $f(x_k)$ & $f'(x_k)$ & $x_{k+1}$ \\ \hline
+        x_k & f(x_k) & f'(x_k) & x_{k+1} \\ \hline
         
         1 & -3,281718172 & 8,154845485 & 1,402425549 \\ \hline
         
@@ -346,6 +351,7 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 
 Решение СЛАУ методом Гаусса. Прямой ход.
 
+\begin{center}
 \begin{tabular}{m{.6\textwidth}m{.4\textwidth}}
     Расширенная матрица СЛАУ: &
     \begin{equation*}
@@ -383,13 +389,14 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
         \end{pmatrix}.
     \end{equation*}
 \end{tabular}
+\end{center}
 
 
 Обратный ход:
 \begin{align*}
-x_3 &= \frac{2820}{145}=\frac{564}{29}, \\
-x_2 &= \frac{160-11x_3}{-23}=\frac{160-11\times\frac{564}{29}}{-23}=\frac{68}{29}, \\
-x_1 &= \frac{11+4x_2-x_3}{-3}=\frac{11+4\times\frac{68}{29}-\frac{568}{29}}{-3}=-\frac{9}{29}.
+    x_3 &= \frac{2820}{145}=\frac{564}{29}, \\
+    x_2 &= \frac{160-11x_3}{-23}=\frac{160-11\times\frac{564}{29}}{-23}=\frac{68}{29}, \\
+    x_1 &= \frac{11+4x_2-x_3}{-3}=\frac{11+4\times\frac{68}{29}-\frac{568}{29}}{-3}=-\frac{9}{29}.
 \end{align*}
 
 \subsubsection*{Приближенное решение системы уравнений}
@@ -414,9 +421,9 @@ x_1 &= \frac{11+4x_2-x_3}{-3}=\frac{11+4\times\frac{68}{29}-\frac{568}{29}}{-3}=
 \end{equation*}
 
 \begin{center}
-    \begin{tabular}{|c|c|c|}
+    \begin{tabular}{|C|C|C|}
         \hline
-        $x_1^{\{m\}}$ & $x_2^{\{m\}}$ & $x_3^{\{m\}}$ \\ \hline
+        x_1^{\{m\}} & x_2^{\{m\}} & x_3^{\{m\}} \\ \hline
         
         0 & 0 & 0 \\ \hline
         
@@ -460,9 +467,9 @@ x_1 &= \frac{11+4x_2-x_3}{-3}=\frac{11+4\times\frac{68}{29}-\frac{568}{29}}{-3}=
 \end{itemize}
 
 \begin{align*}
-|x_1^{\{13\}}-x_1^{\{12\}}| &< 10^{-4}, \\
-|x_2^{\{13\}}-x_2^{\{12\}}| &< 10^{-4}, \\
-|x_3^{\{13\}}-x_3^{\{12\}}| &< 10^{-4}.
+    \left|x_1^{\{13\}}-x_1^{\{12\}}\right| &< 10^{-4}, \\
+    \left|x_2^{\{13\}}-x_2^{\{12\}}\right| &< 10^{-4}, \\
+    \left|x_3^{\{13\}}-x_3^{\{12\}}\right| &< 10^{-4}.
 \end{align*}
 
 При $\varepsilon=10^{-4}$:
@@ -494,29 +501,29 @@ x_1 &= \frac{11+4x_2-x_3}{-3}=\frac{11+4\times\frac{68}{29}-\frac{568}{29}}{-3}=
 \begin{center}
     \begin{tabular}{|c|c|c|c|c|c|}
          \hline
-         x & y & $\Delta y$ & $\Delta^2 y$ & $\Delta^3 y$ & $\Delta^4 y$  \\ \hline
+         $x$ & $y$ & $\Delta y$ & $\Delta^2 y$ & $\Delta^3 y$ & $\Delta^4 y$  \\ \hline
          
-         \begin{tabular}{c}
+         \begin{tabular}{C}
               1  \\ 3 \\ 5 \\ 7 \\ 9
          \end{tabular}
          &
-         \begin{tabular}{c}
+         \begin{tabular}{C}
               6 \\ 10 \\ 8 \\ 12 \\ 14
          \end{tabular}
          &
-         \begin{tabular}{c}
+         \begin{tabular}{C}
               4 \\ -2 \\ 4 \\ 2
          \end{tabular}
          &
-         \begin{tabular}{c}
+         \begin{tabular}{C}
               -6 \\ 6 \\ -2
          \end{tabular}
          &
-         \begin{tabular}{c}
+         \begin{tabular}{C}
               12 \\ -8
          \end{tabular}
          &
-         -20 \\ 
+         $-20$ \\ 
          \hline
          
     \end{tabular}
@@ -526,22 +533,23 @@ x_1 &= \frac{11+4x_2-x_3}{-3}=\frac{11+4\times\frac{68}{29}-\frac{568}{29}}{-3}=
 
 1-я интерполяционная формула Ньютона:
 \begin{multline*}
-P_n(x) = 
-y_0 +
-\frac{\Delta y_0}{1!h}(x-x_0) +
-\frac{\Delta^2 y_0}{2!h^2}(x-x_0)(x-x_1) +
-\ldots + \\ +
-\frac{\Delta^n y_0}{n!h^n}(x-x_0)(x-x_1)\ldots(x-x_{n-1}) .
+    P_n(x) = 
+    y_0 +
+    \frac{\Delta y_0}{1!h}(x-x_0) +
+    \frac{\Delta^2 y_0}{2!h^2}(x-x_0)(x-x_1) +
+    \ldots + \\ +
+    \frac{\Delta^n y_0}{n!h^n}(x-x_0)(x-x_1)\ldots(x-x_{n-1}) .
 \end{multline*}
+
 \begin{multline*}
-P_n(x) =
-6 +
-\frac{4}{1!2}(x-1) +
-\frac{-6}{2!2^2}(x-1)(x-3) + \\ +
-\frac{12}{3!2^3}(x-1)(x-3)(x-5) + \\ +
-\frac{-20}{4!2^4}(x-1)(x-3)(x-5)(x-7) = \\ =
-\frac{-5x^4+104x^3-718x^2+1912x-717}{96} = \\ =
--\frac{5}{96}x^4+\frac{13}{12}x^3-\frac{359}{48}x^2+\frac{239}{12}x-\frac{239}{32} .
+    P_n(x) =
+    6 +
+    \frac{4}{1!2}(x-1) +
+    \frac{-6}{2!2^2}(x-1)(x-3) + \\ +
+    \frac{12}{3!2^3}(x-1)(x-3)(x-5) + \\ +
+    \frac{-20}{4!2^4}(x-1)(x-3)(x-5)(x-7) = \\ =
+    \frac{-5x^4+104x^3-718x^2+1912x-717}{96} = \\ =
+    -\frac{5}{96}x^4+\frac{13}{12}x^3-\frac{359}{48}x^2+\frac{239}{12}x-\frac{239}{32} .
 \end{multline*}
 
 \subsection*{Построение графика}
@@ -567,9 +575,9 @@ P_n(x) =
 Найти значение в точке $x=6$.
 
 \begin{multline*}
-P_n(6) =
--\frac{5}{96}\times6^4+\frac{13}{12}\times6^3-\frac{359}{48}\times6^2+\frac{239}{12}\times6-\frac{239}{32}= \\ =
--\frac{135}{2}+234-\frac{1077}{4}+\frac{239}{2}-\frac{239}{32}=\frac{297}{32}.
+    P_n(6) =
+    -\frac{5}{96}\times6^4+\frac{13}{12}\times6^3-\frac{359}{48}\times6^2+\frac{239}{12}\times6-\frac{239}{32}= \\ =
+    -\frac{135}{2}+234-\frac{1077}{4}+\frac{239}{2}-\frac{239}{32}=\frac{297}{32}.
 \end{multline*}
 
 \newpage
@@ -580,14 +588,14 @@ P_n(6) =
 Найти аналитическое выражение для неопределенного интеграла $\int \sin(\ln(6x))\,dx$.
 
 \begin{multline*}
-\int\sin(\ln(6x))\,dx =
-\left[u=6x, \quad du=6dx\right] =
-\frac{1}{6}\int\sin(\ln(u))\,du = \\ =
-\left[v=\ln(u), \quad dv=\frac{1}{u}\,du\right] =
-\frac{1}{6}\int\exp(v)\sin(v)\,dv = \\ =
-\frac{1}{6}\left(\frac{1}{2}\exp(v)((\sin(v)-\cos(v))\right)+C = \\ =
-\frac{1}{12}u(\sin(\ln(u))-\cos(\ln(u)))+C = \\ =
-\frac{1}{2}x(\sin(\ln(6x))-\cos(\ln(6x)))+C.
+    \int\sin(\ln(6x))\,dx =
+    \left[u=6x, \quad du=6dx\right] =
+    \frac{1}{6}\int\sin(\ln(u))\,du = \\ =
+    \left[v=\ln(u), \quad dv=\frac{1}{u}\,du\right] =
+    \frac{1}{6}\int\exp(v)\sin(v)\,dv = \\ =
+    \frac{1}{6}\left(\frac{1}{2}\exp(v)((\sin(v)-\cos(v))\right)+C = \\ =
+    \frac{1}{12}u(\sin(\ln(u))-\cos(\ln(u)))+C = \\ =
+    \frac{1}{2}x(\sin(\ln(6x))-\cos(\ln(6x)))+C.
 \end{multline*}
 
 \subsection*{Графики интеграла и подынтегральной функции}
@@ -668,16 +676,16 @@ $$\int\limits_a^b f(x) \, dx \approx \frac{\Delta}{2} (f(x_0)+2f(x_1)+2f(x_2)+\d
 Разобьем интеграл на $N=6$ равных промежутков. $\Delta x=\frac{b-a}{N}=\frac{8-2}{6}$.
 
 \begin{center}
-    \begin{tabular}{|c|c|c|}
+    \begin{tabular}{|C|C|C|}
         \hline
-        $i$ & $x_i$ & $y_i$ \\ \hline
-        0 & 2 & $-0,0098$ \\ \hline
-        1 & 3 & $-9,27\times10^{-5} \approx 0$ \\ \hline
-        2 & 4 & $-1,02\times10^{-7} \approx 0$ \\ \hline
-        3 & 5 & $-1,37\times10^{-11} \approx 0$ \\ \hline
-        4 & 6 & $-2,3\times10^{-16} \approx 0$ \\ \hline
-        5 & 7 & $-4,81\times10^{-22} \approx 0$ \\ \hline
-        6 & 8 & $-1,23\times10^{-28} \approx 0$ \\ \hline
+        i & x_i & y_i \\ \hline
+        0 & 2 & -0,0098 \\ \hline
+        1 & 3 & -9,27\times10^{-5} \approx 0 \\ \hline
+        2 & 4 & -1,02\times10^{-7} \approx 0 \\ \hline
+        3 & 5 & -1,37\times10^{-11} \approx 0 \\ \hline
+        4 & 6 & -2,3\times10^{-16} \approx 0 \\ \hline
+        5 & 7 & -4,81\times10^{-22} \approx 0 \\ \hline
+        6 & 8 & -1,23\times10^{-28} \approx 0 \\ \hline
     \end{tabular}
 \end{center}
 
@@ -787,7 +795,7 @@ $$\int U\,dV = UV - \int V \,dU .$$
 
 \subsection*{Построить график найденного решения}
 
-Построить график найденного решения на отрезке $[0; 6]$.
+Построить график найденного решения на отрезке $[0;\,6]$.
 
 \begin{figure}[H]
     \centering
@@ -813,13 +821,13 @@ $$y_{n+1}=y_n+hf(t_n,\,y_n) .$$
 \begin{gather*}
     f(t,\,y)=\frac{1}{6}(t+y) ,\\
     y_{n+1}=y_n+\frac{1}{6}(t_n+y_n) ,\\
-    t_0=0 , \quad y_0=6 \\
+    t_0=0 , \quad y_0=6 .\\
 \end{gather*}
 
 \begin{center}
-    \begin{tabular}{|c|c|c|}
+    \begin{tabular}{|C|C|C|}
         \hline
-        $n$ & $t_n$ & $y_n$ \\ \hline
+        n & t_n & y_n \\ \hline
         0 & 0 & 6 \\ \hline
         1 & 1 & 7 \\ \hline
         2 & 2 & 8,333 \\ \hline
@@ -842,13 +850,13 @@ $$y_{n+1}=y_n+hf(t_n,\,y_n) .$$
 \begin{gather*}
     f(t,\,y)=\sin(6y+t^2) ,\\
     y_{n+1}=y_n+\sin(6y+t^2) ,\\
-    t_0=0 , \quad y_0=6 \\
+    t_0=0 , \quad y_0=6 . \\
 \end{gather*}
 
 \begin{center}
-    \begin{tabular}{|c|c|c|}
+    \begin{tabular}{|C|C|C|}
         \hline
-        $n$ & $t_n$ & $y_n$ \\ \hline
+        n & t_n & y_n \\ \hline
         0 & 0 & 6 \\ \hline
         1 & 1 & 5,008 \\ \hline
         2 & 2 & 4,648 \\ \hline
