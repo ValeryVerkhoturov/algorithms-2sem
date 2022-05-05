@@ -77,7 +77,7 @@
 \begin{enumerate}
     \item Найти приближение функции, заданной в точках, многочленом, значения которого совпадают со значениями функции в указанных точках:
     \begin{center}
-         \begin{tabular}{|C|C|C|C|C|C|}
+         \begin{tabular}{|*{6}{C|}}
              \hline
              x & 1 & 3 & 5 & 7 & 9 \\ \hline
              y & 0+6 & 4+6 & 2+6 & 6+6 & 8+6 \\
@@ -136,7 +136,7 @@ x &= \frac{-b\pm\sqrt{D}}{2a},
     \begin{tikzpicture}
         \begin{axis}[legend pos = north west, axis lines = left, grid = both, xlabel = \(x\), ylabel = {\(f(x)\)}, ymax=11]
             \addplot [domain=-2:2, samples=30, color=red]{x^2*5 + 2*x - 6};
-            \addlegendentry{\(5x^2 + 2x - 6\)}
+            \addlegendentry{\(5x^2 + 2x - 6\)};
         \end{axis}
     \end{tikzpicture}
     \caption{График функции}
@@ -154,7 +154,7 @@ $$x_2=\frac{1}{2}(x_0+x_1).$$
 
 \begin{center}
     \resizebox{\textwidth}{!}{
-        \begin{tabular}{|C|C|C|C|C|C|C|C|}
+        \begin{tabular}{|*{8}{C|}}
             \hline
             x_0 & x_1 & x_2 & f(x_0) & f(x_1) & f(x_2) & f(x_0)f(x_2) & f(x_1)f(x_2) \\ \hline
         
@@ -206,27 +206,18 @@ $$x_2=\frac{1}{2}(x_0+x_1).$$
 
 Необходимо найти приближенное значение правого корня методом простой итерации с точностью $\varepsilon=10^{-6}$.
 
-%В соответствии с критерием сходимости наибольшая скорость сходимости обеспечивается при $|\varphi'(x)|=0$.
-%$$f(x)=0,$$
-%$$f(x)=5x^2+2x-6,$$
-%$$x=\varphi(x),$$
-%$$x=\frac{-6-5x^2}{2}=-3-2{,}5x^2,$$
-%$$\varphi(x)=-3-2{,}5x^2,$$
-%$$\varphi'(x)=-5x,$$
-%$$|-5x|=0,$$
-%$$x=x_0=0.$$
 По рис.~\ref{sr1Task1Function} начальное приближение к правому корню $x_0=0$.
 
 Итерационная формула: $$x_{k+1}=x_k-\frac{f(x_k)}{f'(x_k)} .$$
 
 Нахождение производной $f(x)$:
 \begin{align*}
-f(x) &= 5x^2+2x-6, \\
-f'(x) &= 10x+2.
+    f(x) &= 5x^2+2x-6, \\
+    f'(x) &= 10x+2.
 \end{align*}
 
 \begin{center}
-    \begin{tabular}{|C|C|C|C|}
+    \begin{tabular}{|*{4}{C|}}
         \hline
         x_k & f(x_k) & f'(x_k) & x_{k+1} \\ \hline
         
@@ -274,7 +265,7 @@ f'(x) &= 10x+2.
     \begin{tikzpicture}
         \begin{axis}[legend pos = north west, axis lines = left, grid = both, xlabel = \(x\), ylabel = {\(f(x)\)}, ymax=-1, xmax=2, xmin=-4]
             \addplot [domain=-5:2, samples=100, color=red]{x^2*exp(x)-6};
-            \addlegendentry{\(x^2\exp(x)-6\)}
+            \addlegendentry{\(x^2\exp(x)-6\)};
         \end{axis}
     \end{tikzpicture}
     \caption{График функции}
@@ -294,7 +285,7 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 \end{align*}
 
 \begin{center}
-    \begin{tabular}{|C|C|C|C|}
+    \begin{tabular}{|*{4}{C|}}
         \hline
         x_k & f(x_k) & f'(x_k) & x_{k+1} \\ \hline
         
@@ -352,7 +343,7 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 Решение СЛАУ методом Гаусса. Прямой ход.
 
 \begin{center}
-\begin{tabular}{m{.6\textwidth}m{.4\textwidth}}
+\begin{tabular}{p{.6\textwidth}p{.4\textwidth}}
     Расширенная матрица СЛАУ: &
     \begin{equation*}
         \begin{pmatrix}
@@ -421,7 +412,7 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 \end{equation*}
 
 \begin{center}
-    \begin{tabular}{|C|C|C|}
+    \begin{tabular}{|*{3}{C|}}
         \hline
         x_1^{\{m\}} & x_2^{\{m\}} & x_3^{\{m\}} \\ \hline
         
@@ -489,7 +480,7 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 Необходимо найти приближение функции, заданной в точках, многочленом, значения которого совпадают со значениями функции в указанных точках:
 
 \begin{center}
-    \begin{tabular}{|c|c|c|c|c|c|}
+    \begin{tabular}{|*{6}{C|}}
          \hline
          x & 1 & 3 & 5 & 7 & 9 \\ \hline
          y & 6 & 10 & 8 & 12 & 14 \\
@@ -559,7 +550,6 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
         \begin{axis}[legend pos = south east, axis lines = left, grid = both, xlabel = \(x\), ylabel = {\(f(x)\)}, ymin=5, xmin=0]
             \addplot [domain=0:10, samples=100, color=red]{(-5*x^4+104*x^3-718*x^2+1912*x-717)/96};
             \addlegendentry{\(-\frac{5}{96}x^4+\frac{13}{12}x^3-\frac{359}{48}x^2+\frac{239}{12}x-\frac{239}{32}\)};
-            
             \addplot[mark=*] coordinates {(1,6)} node [above right,pos=1] {$(1;\,6)$};
             \addplot[mark=*] coordinates {(3,10)} node [right,pos=1] {$(3;\,10)$};
             \addplot[mark=*] coordinates {(5,8)} node [below,pos=1] {$(5;\,8)$};
@@ -676,16 +666,16 @@ $$\int\limits_a^b f(x) \, dx \approx \frac{\Delta}{2} (f(x_0)+2f(x_1)+2f(x_2)+\d
 Разобьем интеграл на $N=6$ равных промежутков. $\Delta x=\frac{b-a}{N}=\frac{8-2}{6}$.
 
 \begin{center}
-    \begin{tabular}{|C|C|C|}
+    \begin{tabular}{|*{3}{C|}}
         \hline
         i & x_i & y_i \\ \hline
         0 & 2 & -0,0098 \\ \hline
-        1 & 3 & -9,27\times10^{-5} \approx 0 \\ \hline
-        2 & 4 & -1,02\times10^{-7} \approx 0 \\ \hline
-        3 & 5 & -1,37\times10^{-11} \approx 0 \\ \hline
-        4 & 6 & -2,3\times10^{-16} \approx 0 \\ \hline
-        5 & 7 & -4,81\times10^{-22} \approx 0 \\ \hline
-        6 & 8 & -1,23\times10^{-28} \approx 0 \\ \hline
+        1 & 3 & -9,27 \times 10^{-5} \approx 0 \\ \hline
+        2 & 4 & -1,02 \times 10^{-7} \approx 0 \\ \hline
+        3 & 5 & -1,37 \times 10^{-11} \approx 0 \\ \hline
+        4 & 6 & -2,3 \times 10^{-16} \approx 0 \\ \hline
+        5 & 7 & -4,81 \times 10^{-22} \approx 0 \\ \hline
+        6 & 8 & -1,23 \times 10^{-28} \approx 0 \\ \hline
     \end{tabular}
 \end{center}
 
@@ -802,7 +792,7 @@ $$\int U\,dV = UV - \int V \,dU .$$
     \begin{tikzpicture}
         \begin{axis}[legend pos = north west, axis lines = left, grid = both, xlabel = \(x\), ylabel = {\(f(x)\)}]
             \addplot [domain=0:6, samples=30, color=red]{12*exp(x/6)-x-6};
-            \addlegendentry{\(12\exp\left(\frac{x}{6}\right)-x-6\)}
+            \addlegendentry{\(12\exp\left(\frac{x}{6}\right)-x-6\)};
         \end{axis}
     \end{tikzpicture}
     \caption{График найденного решения}
@@ -825,7 +815,7 @@ $$y_{n+1}=y_n+hf(t_n,\,y_n) .$$
 \end{gather*}
 
 \begin{center}
-    \begin{tabular}{|C|C|C|}
+    \begin{tabular}{|*{3}{C|}}
         \hline
         n & t_n & y_n \\ \hline
         0 & 0 & 6 \\ \hline
@@ -854,7 +844,7 @@ $$y_{n+1}=y_n+hf(t_n,\,y_n) .$$
 \end{gather*}
 
 \begin{center}
-    \begin{tabular}{|C|C|C|}
+    \begin{tabular}{|*{3}{C|}}
         \hline
         n & t_n & y_n \\ \hline
         0 & 0 & 6 \\ \hline
