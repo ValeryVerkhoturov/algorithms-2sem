@@ -4,7 +4,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 
-
 \usepackage{authblk} % Принадлежность на титульном листе
 
 \usepackage{amsmath} % Система уравнений
@@ -17,6 +16,8 @@
 \tikzexternalize
 
 \usepackage{icomma} % Убрать расстояние у запятой между цифрами
+
+\usepackage{gauss} % Визуализация операций над матрицей
 
 \usepackage{array}
 
@@ -33,7 +34,10 @@
 
 \righthyphenmin=2 % Допуск переноса слога в 2 буквы
 
-\newcolumntype{C}{>{$}c<{$}} % Столбец таблицы с математикой
+% Столбцы с математикой
+\newcolumntype{C}{>{$}c<{$}}
+\newcolumntype{R}{>{$}r<{$}}
+\newcolumntype{L}{>{$}l<{$}}
 
 
 \begin{document}
@@ -105,7 +109,7 @@
     \item построить график найденного решения на отрезке $[0;\,5]$.
 \end{enumerate}
 
-\newpage
+\clearpage
 \section{Самостоятельная работа \textnumero{} 1. Решение нелинейных уравнений и систем линейных уравнений}
 
 \subsection{Задача 1}
@@ -132,7 +136,9 @@ x &= \frac{-b\pm\sqrt{D}}{2a},
 
 \subsubsection*{График левой части уравнения}
 
-\begin{figure}[!ht]
+См. рис.~\ref{sr1Task1Function} на стр.~\pageref{sr1Task1Function}.
+
+\begin{figure}[htb]
     \centering
     \begin{tikzpicture}
         \begin{axis}[legend pos = north west, axis lines = left, grid = both, xlabel = $x$, ylabel = {$f(x)$}, ymax=11]
@@ -144,8 +150,6 @@ x &= \frac{-b\pm\sqrt{D}}{2a},
     \label{sr1Task1Function}
 \end{figure}
 
-См. рис.~\ref{sr1Task1Function} на стр.~\pageref{sr1Task1Function}.
-
 \subsubsection*{Приближенное значение левого корня методом половинного деления}
 
 Необходимо найти приближенное значение левого корня $5x^2+2x-6=0$ методом половинного деления с точностью $\varepsilon=10^{-3}$.
@@ -155,7 +159,10 @@ x &= \frac{-b\pm\sqrt{D}}{2a},
 Функция нахождения $x_2$:
 $$x_2=\frac{1}{2}(x_0+x_1).$$
 
-\begin{center}
+См. таблицу~\ref{sr1Task1Table} на стр.~\pageref{sr1Task1Table}.
+
+\begin{table}[htb]
+    \centering
     \resizebox{\textwidth}{!}{
         \begin{tabular}{|*{8}{C|}}
             \hline
@@ -178,12 +185,13 @@ $$x_2=\frac{1}{2}(x_0+x_1).$$
             -1,3125 & -1,3165 & -1,3145 & -0,0117 & 0,0329 & 0,0106 & -0,00012402 & 0,00034874 \\ \hline
         
             -1,3125 & -1,3145 & -1,3135 & -0,0117 & 0,0106 & -0,0006 & 0,00000702 & -0,00000636 \\ \hline
-        
         \end{tabular}
     }
-\end{center}
+    \caption{Результаты приближения методом половинного деления}
+    \label{sr1Task1Table}
+\end{table}
 
-Функции\footnote{представлены формулы для строки 3} электронной таблицы\footnote{Google Sheets}:
+Функции\footnote{представлены формулы для строки 3} электронной таблицы\footnote{Google Sheets}~\ref{sr1Task1Table}:
 \begin{itemize}
     \item для столбца A, кроме первой итерации --- $=IF(G2<=0, A2, B2)$;
     
@@ -219,8 +227,11 @@ $$x_2=\frac{1}{2}(x_0+x_1).$$
     f'(x) &= 10x+2.
 \end{align*}
 
-\begin{center}
-    \begin{tabular}{|*{4}{C|}}
+См. таблицу~\ref{sr1Task1Table2} на стр.~\pageref{sr1Task1Table2}.
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|*{4}{L|}}
         \hline
         x_k & f(x_k) & f'(x_k) & x_{k+1} \\ \hline
         
@@ -241,9 +252,11 @@ $$x_2=\frac{1}{2}(x_0+x_1).$$
         0,9135528726 & 0 & 11,13552873 & 0,9135528726 \\ \hline
         
     \end{tabular}
-\end{center}
+    \caption{Результаты приближения методом простой итерации}
+    \label{sr1Task1Table2}
+\end{table}
 
-Функции\footnote{представлены формулы для строки 3} электронной таблицы\footnote{Google Sheets}:
+Функции\footnote{представлены формулы для строки 3} электронной таблицы\footnote{Google Sheets}~\ref{sr1Task1Table2}:
 \begin{itemize}
     \item для столбца A, кроме первой итерации --- <<$=D2$>>;
     
@@ -262,8 +275,11 @@ $$x_2=\frac{1}{2}(x_0+x_1).$$
 
 Дано уравнение $x^2\exp(x)-6=0$.
 
+См. рис.~\ref{sr1Task2Function} на стр.~\pageref{sr1Task2Function}.
+
 \subsubsection*{График левой части уравнения}
-\begin{figure}[!ht]
+
+\begin{figure}[htb]
     \centering
     \begin{tikzpicture}
         \begin{axis}[legend pos = north west, axis lines = left, grid = both, xlabel = $x$, ylabel = {$f(x)$}, ymax=-1, xmax=2, xmin=-4]
@@ -274,8 +290,6 @@ $$x_2=\frac{1}{2}(x_0+x_1).$$
     \caption{График функции}
     \label{sr1Task2Function}
 \end{figure}
-
-См. рис.~\ref{sr1Task2Function} на стр.~\pageref{sr1Task2Function}.
 
 \subsubsection*{Нахождение приближенного решения}
 
@@ -289,8 +303,11 @@ f(x) &= x^2\exp(x)-6, \\
 f'(x) &= 2x\exp(x)+x^2\exp(x).
 \end{align*}
 
-\begin{center}
-    \begin{tabular}{|*{4}{C|}}
+См. таблицу~\ref{sr1Task2Table} на стр.~\pageref{sr1Task2Table}.
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|*{4}{L|}}
         \hline
         x_k & f(x_k) & f'(x_k) & x_{k+1} \\ \hline
         
@@ -307,9 +324,11 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
         1,287051532 & 0 & 15,323636 & 1,287051532 \\ \hline
         
     \end{tabular}
-\end{center}
+    \caption{Результаты приближения методом простой итерации}
+    \label{sr1Task2Table}
+\end{table}
 
-Функции\footnote{представлены формулы для строки 3} электронной таблицы\footnote{Google Sheets}:
+Функции\footnote{представлены формулы для строки 3} электронной таблицы\footnote{Google Sheets}~\ref{sr1Task2Table}:
 \begin{itemize}
     \item для столбца A, кроме первой итерации --- <<$=D2$>>;
     
@@ -330,16 +349,18 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 
 \begin{equation*}
     \begin{cases}
-        $$2x_1+6x_2-x_3 &= -12+6$$ \\
-        $$5x_1-x_2+2x_3 &= 29+6$$ \\
-        $$-3x_1-4x_2+x_3 &= 5+6$$
+        $$2x_1+6x_2-x_3 = -12+6$$ \\
+        $$5x_1-x_2+2x_3 = 29+6$$ \\
+        $$-3x_1-4x_2+x_3 = 5+6$$
     \end{cases}
     \Longleftrightarrow
-    \begin{cases}
-        $$2x_1+6x_2-x_3 &= -6$$ \\
-        $$5x_1-x_2+2x_3 &= 35$$ \\
-        $$-3x_1-4x_2+x_3 &= 11$$
-    \end{cases}
+    \left\{
+        \begin{tabular}{@{\hskip0pt} >{$\phantom{}}r<{x_1$} @{\hskip3pt} >{$\phantom{}}r<{x_2$} @{\hskip3pt} >{$\phantom{}}r<{x_3$} @{\hskip3pt} C @{\hskip3pt} C}
+            \phantom{+}2 & +6 & -\phantom{1} & = & -6 \\
+            \phantom{+}5 & -\phantom{1} & +2 & = & \phantom{+}35 \\
+            -3 & -4 & +\phantom{1} & = & \phantom{+}11
+        \end{tabular}
+    \right.
 \end{equation*}
 
 
@@ -347,46 +368,53 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 
 Решение СЛАУ методом Гаусса. Прямой ход.
 
-\begin{center}
-\begin{tabular}{m{.6\textwidth}m{.4\textwidth}}
-    Расширенная матрица СЛАУ: &
-    \begin{equation*}
-        \begin{pmatrix}
-            2 & 6 & -1 & \vrule & -6 \\
-            5 & -1 & 2 & \vrule & 35 \\
-            -3 & -4 & 1 & \vrule & 11
-        \end{pmatrix}.
-    \end{equation*}
-    \\
-    Умножить 1 строку на 5, умножить 2 строку на 2, вычесть 2 строку из~1: &
-    \begin{equation*}
-        \begin{pmatrix}
-            0 & 32 & -9 & \vrule & -100 \\
-            5 & -1 & 2 & \vrule & 35 \\
-            -3 & -4 & 1 & \vrule & 11
-        \end{pmatrix}.
-    \end{equation*}
-    \\
-    Умножить 2 строку на 3, умножить 3 строку на 5, прибавить 3 строку к~2: &
-    \begin{equation*}
-        \begin{pmatrix}
-            0 & 32 & -9 & \vrule & -100 \\
-            0 & -23 & 11 & \vrule & 160 \\
-            -3 & -4 & 1 & \vrule & 11  
-        \end{pmatrix}.
-    \end{equation*} 
-    \\
-    Умножить 1 строку на 23, умножить 2 строку на 32, прибавить 2 строку к~1: &
-    \begin{equation*}
-        \begin{pmatrix}
-            0 & 0 & 146 & \vrule & 2820 \\
-            0 & -23 & 11 & \vrule & 160 \\
-            -3 & -4 & 1 & \vrule & 11
-        \end{pmatrix}.
-    \end{equation*}
-\end{tabular}
-\end{center}
+Расширенная матрица СЛАУ:
+\begin{equation*}
+    \begin{gmatrix}[v]
+        2 & 6 & -1 & -6 \\
+        5 & -1 & 2 & 35 \\
+        -3 & -4 & 1 & 11
+    \end{gmatrix}.
+\end{equation*}
 
+Преобразование матрицы:
+\begin{align*}
+    \begin{gmatrix}[v]
+        2 & 6 & -1 & -6 \\
+        5 & -1 & 2 & 35 \\
+        -3 & -4 & 1 & 11
+        \rowops
+            \mult{0}{\cdot 5} % умножить 1 строку на 5
+            \mult{1}{\cdot (-2)} % умножить 2 строку на -2
+            \add{1}{0} % прибавить 2 строку к 1
+    \end{gmatrix}
+    & \longrightarrow
+    \begin{gmatrix}[v]
+        0 & 32 & -9 & -100 \\
+        5 & -1 & 2 & 35 \\
+        -3 & -4 & 1 & 11
+        \rowops
+            \mult{1}{\cdot 3} % умножить 2 строку на 3
+            \mult{2}{\cdot 5} % умножить 3 строку на 5
+            \add{2}{1} % прибавить 3 строку к 2
+    \end{gmatrix} 
+    \longrightarrow{} \\ \longrightarrow{}
+    \begin{gmatrix}[v]
+        0 & 32 & -9 & -100 \\
+        0 & -23 & 11 & 160 \\
+        -3 & -4 & 1 & 11
+        \rowops
+            \mult{0}{\cdot 23} % умножить 1 строку на 23
+            \mult{1}{\cdot 32} % умножить 2 строку на 32
+            \add{1}{0} % прибавить 2 строку к 1
+    \end{gmatrix}
+    & \longrightarrow
+    \begin{gmatrix}[v]
+            0 & 0 & 146 & 2820 \\
+            0 & -23 & 11 & 160 \\
+            -3 & -4 & 1 & 11
+        \end{gmatrix}.
+\end{align*}
 
 Обратный ход:
 \begin{align*}
@@ -416,7 +444,10 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
     \end{cases}
 \end{equation*}
 
-\begin{center}
+См. таблицу~\ref{sr1Task3Table} на стр.~\pageref{sr1Task3Table}.
+
+\begin{table}[htb]
+    \centering
     \begin{tabular}{|*{3}{C|}}
         \hline
         x_1^{\{m\}} & x_2^{\{m\}} & x_3^{\{m\}} \\ \hline
@@ -450,9 +481,11 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
         -0,3103279122 & 2,344816979 & 19,44828418 \\ \hline
         
     \end{tabular}
-\end{center}
+    \caption{Результаты приближения методом Зейделя}
+    \label{sr1Task3Table}
+\end{table}
 
-Функции\footnote{представлены формулы для строки 3} электронной таблицы\footnote{Google Sheets}:
+Функции\footnote{представлены формулы для строки 3} электронной таблицы\footnote{Google Sheets}~\ref{sr1Task3Table}:
 \begin{itemize}
     \item для столбца A, кроме первой итерации --- <<$=7+B2/5-C2*2/5$>>;
     
@@ -477,7 +510,7 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
     \end{cases}
 \end{equation*}
 
-\newpage
+\clearpage
 \section{Самостоятельная работа \textnumero{} 2. Построение интерполяционных многочленов}
 
 \subsection*{Приближение функции}
@@ -493,8 +526,9 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
     \end{tabular}
 \end{center}
 
-Расчет разностей табличной функции:
-\begin{center}
+См. таблицу~\ref{sr2Table} на стр.~\pageref{sr2Table}.
+\begin{table}[htb]
+    \centering
     \begin{tabular}{|*{6}{c|}}
          \hline
          $x$ & $y$ & $\Delta y$ & $\Delta^2 y$ & $\Delta^3 y$ & $\Delta^4 y$  \\ \hline
@@ -523,7 +557,9 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
          \hline
          
     \end{tabular}
-\end{center}
+    \caption{Расчет разностей табличной функции}
+    \label{sr2Table}
+\end{table}
 
 Узлы интерполяции равноотстоящие, т.к. $h = 3-1 = 5-3 = 7-5 \hm = 9-7 = 2 = const$.
 
@@ -550,7 +586,9 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 
 \subsection*{Построение графика}
 
-\begin{figure}[!ht]
+См. рис.~\ref{sr2Function} на стр.~\pageref{sr2Function}.
+
+\begin{figure}[htb]
     \centering
     \begin{tikzpicture}
         \begin{axis}[legend pos = south east, axis lines = left, grid = both, xlabel = $x$, ylabel = {$f(x)$}, ymin=5, xmin=0]
@@ -567,8 +605,6 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
     \label{sr2Function}
 \end{figure}
 
-См. рис.~\ref{sr2Function} на стр.~\pageref{sr2Function}.
-
 \subsection*{Значение в точке}
 
 Найти значение в точке $x=6$.
@@ -579,7 +615,7 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
     -\frac{135}{2}+234-\frac{1077}{4}+\frac{239}{2}-\frac{239}{32}=\frac{297}{32}.
 \end{multline*}
 
-\newpage
+\clearpage
 \section{Самостоятельная работа \textnumero{} 3. Вычисление определенных интегралов}
 
 \subsection*{Аналитическое выражение}
@@ -601,7 +637,9 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 
 Построить графики найденного интеграла --- красным цветом и подынтегральной функции --- синим цветом.
 
-\begin{figure}[!ht]
+См. рис.~\ref{sr3Functions} на стр.~\pageref{sr3Functions}.
+
+\begin{figure}[htb]
     \begin{tikzpicture}
         \centering
         \begin{axis}[legend pos = south west, axis lines = left, grid = both, xlabel = $x$, ylabel = {$f(x)$}, ymax=.2, ymin=-1, domain=.0001:2]
@@ -614,8 +652,6 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
     \caption{Графики интеграла, подынтегральной функции}
     \label{sr3Functions}
 \end{figure}
-
-См. рис.~\ref{sr3Functions} на стр.~\pageref{sr3Functions}.
 
 
 \subsection*{Приближенное значение интеграла}
@@ -677,8 +713,11 @@ $$\int\limits_a^b f(x) \, dx \approx \frac{\Delta}{2} (f(x_0)+2f(x_1)+2f(x_2)+\d
 
 Разобьем интеграл на $N=6$ равных промежутков. $\Delta x=\frac{b-a}{N}=\frac{8-2}{6}$.
 
-\begin{center}
-    \begin{tabular}{|*{3}{C|}}
+См. талицу~\ref{sr3Table} на стр.~\pageref{sr3Table}.
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|*{3}{L|}}
         \hline
         i & x_i & y_i \\ \hline
         0 & 2 & -0,0098 \\ \hline
@@ -689,7 +728,9 @@ $$\int\limits_a^b f(x) \, dx \approx \frac{\Delta}{2} (f(x_0)+2f(x_1)+2f(x_2)+\d
         5 & 7 & -4,81 \times 10^{-22} \approx 0 \\ \hline
         6 & 8 & -1,23 \times 10^{-28} \approx 0 \\ \hline
     \end{tabular}
-\end{center}
+    \caption{Результат приближения значения интеграла}
+    \label{sr3Table}
+\end{table}
 
 $$\int\limits_2^8 \exp(-x^2)\sin(6x)\,dx \approx \frac{1}{2}(-0,0098)=-0,0049 .$$
 
@@ -730,7 +771,7 @@ $$E=-\frac{(b-a)^3}{12N^2}\max(f''(\xi)) \text{, \quad где } \xi\in[a; b] .$$
 \end{gather*}
 
 
-\newpage
+\clearpage
 \section{Самостоятельная работа \textnumero{} 4. Решение обыкновенных дифференциальных уравнений}
 
 \subsection*{Аналитическое решение задачи Коши}
@@ -799,7 +840,9 @@ $$\int U\,dV = UV - \int V \,dU .$$
 
 Построить график найденного решения на отрезке $[0;\,6]$.
 
-\begin{figure}[!ht]
+См. рис.~\ref{sr4function1} на стр.~\pageref{sr4function1}.
+
+\begin{figure}[htb]
     \centering
     \begin{tikzpicture}
         \begin{axis}[legend pos = north west, axis lines = left, grid = both, xlabel = $x$, ylabel = {$f(x)$}]
@@ -810,8 +853,6 @@ $$\int U\,dV = UV - \int V \,dU .$$
     \caption{График найденного решения}
     \label{sr4function1}
 \end{figure}
-
-См. рис.~\ref{sr4function1} на стр.~\pageref{sr4function1}.
 
 \subsection*{Численное решение задачи Коши}
 
@@ -829,8 +870,11 @@ $$y_{n+1}=y_n+hf(t_n,\,y_n) .$$
     t_0=0 , \quad y_0=6 .\\
 \end{gather*}
 
-\begin{center}
-    \begin{tabular}{|*{3}{C|}}
+См. таблицу~\ref{sr4Table} на стр.~\pageref{sr4Table}.
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|*{3}{L|}}
         \hline
         n & t_n & y_n \\ \hline
         0 & 0 & 6 \\ \hline
@@ -841,7 +885,9 @@ $$y_{n+1}=y_n+hf(t_n,\,y_n) .$$
         5 & 5 & 14,936 \\ \hline
         6 & 6 & 18,259 \\ \hline
     \end{tabular}
-\end{center}
+    \caption{Результат численного решения}
+    \label{sr4Table}
+\end{table}
 
 \subsection*{Численное решение задачи Коши}
 
@@ -858,8 +904,11 @@ $$y_{n+1}=y_n+hf(t_n,\,y_n) .$$
     t_0=0 , \quad y_0=6 . \\
 \end{gather*}
 
-\begin{center}
-    \begin{tabular}{|*{3}{C|}}
+См. таблицу~\ref{sr4Table2} на стр.~\pageref{sr4Table2}.
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{|*{3}{L|}}
         \hline
         n & t_n & y_n \\ \hline
         0 & 0 & 6 \\ \hline
@@ -869,7 +918,9 @@ $$y_{n+1}=y_n+hf(t_n,\,y_n) .$$
         4 & 4 & 6,043 \\ \hline
         5 & 5 & 6,955 \\ \hline
     \end{tabular}
-\end{center}
+    \caption{Результат численного решения}
+    \label{sr4Table2}
+\end{table}
 
 $$y(1)=5,008 , \quad y(2)=4,648 .$$
 
@@ -877,7 +928,9 @@ $$y(1)=5,008 , \quad y(2)=4,648 .$$
 
 Построить график найденного решения на отрезке $[0;\,5]$.
 
-\begin{figure}[!ht]
+См. рис.~\ref{sr4function2} на стр.~\pageref{sr4function2}.
+
+\begin{figure}[htb]
     \centering
     \begin{tikzpicture}
         \begin{axis}[axis lines = left, grid = both, xlabel = $x$, ylabel = {$f(x)$}]
@@ -887,8 +940,6 @@ $$y(1)=5,008 , \quad y(2)=4,648 .$$
     \caption{График найденного решения}
     \label{sr4function2}
 \end{figure}
-
-См. рис.~\ref{sr4function2} на стр.~\pageref{sr4function2}.
 
 
 
