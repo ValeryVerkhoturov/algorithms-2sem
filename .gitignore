@@ -1,0 +1,7 @@
+*.md5
+*.aux
+*.auxlock
+*.log
+*.out
+*.synctex.gz
+*.toc
