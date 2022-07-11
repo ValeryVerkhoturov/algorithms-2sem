@@ -2,7 +2,7 @@
 % !TeX spellcheck = russian-aot
 % !TeX program = pdflatex
 
-\documentclass[10pt, a4paper, titlepage]{article}
+\documentclass[10pt, a4paper, titlepage, oneside]{article}
 
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -34,6 +34,11 @@
 \affil{РТУ МИРЭА}
 \date\today
 
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[LE,RO]{БСБО-05-20 В.~С.~Верхотуров}
+\fancyhead[RE,LO]{Алгоритмы численных методов}
+
 \newcommand*\hm[1]{#1\nobreak\discretionary{}{\hbox{$\mathsurround=0pt #1$}}{}} % Дублирование математического оператора при переносе выражения на новую строку
 
 \righthyphenmin=2 % Допуск переноса слога в 2 буквы
@@ -42,14 +47,17 @@
 \newcolumntype{C}{>{$}c<{$}}
 
 \usepackage{siunitx} % форматирование чисел
-\sisetup{output-decimal-marker={,}, round-mode=figures, round-precision=3, round-pad=false, drop-zero-decimal}
+\sisetup{output-decimal-marker={,}, round-pad=false, drop-zero-decimal}
 
 \usepackage{booktabs}
 
 
+
 \begin{document}
 
+
 \maketitle
+
 \tableofcontents
 \newpage
 
@@ -179,7 +187,7 @@ x &= \frac{-b\pm\sqrt{D}}{2a},
 
 Необходимо найти приближенное значение левого корня $5x^2+2x-6=0$ методом половинного деления с~точностью $\varepsilon=10^{-3}$.
 
-По~графику на~рис.~\ref{sr1Task1Function} можно предположить, что значение левого корня находится на~интервале $[-1,5;-1]$. $f(-1,5)=2,25$, $f(-1)=-3$. $f(x_0)f(x_1) \hm =2,25\times(-3)=-6,75\leq0$, следовательно промежуток действительно содержит хотя бы один корень. Для первой итерации: $x_0=-1,5$, $x_1=-1$.
+По~графику на~рис.~\ref{sr1Task1Function} можно предположить, что значение левого корня находится на~интервале $[-1,5;-1]$. $f(-1,5)=2,25$, $f(-1)=-3$. $f(x_0)f(x_1) \hm =2,25\times(-3)=-6,75\leq0$, следовательно промежуток действительно содержит хотя бы один корень. Для первой итерации: $x_0\hm=-1,5$, $x_1=-1$.
 
 Функция нахождения $x_2$:
 $$x_2=\frac{1}{2}(x_0+x_1).$$
@@ -189,7 +197,7 @@ $$x_2=\frac{1}{2}(x_0+x_1).$$
 \begin{table}[htb]
 	\centering
 	\resizebox{\textwidth}{!}{
-		\begin{tabular}{|*{8}{S|}}
+		\begin{tabular}{*{8}{S[table-format=1e1]}}
 			\toprule
 			
 			{$x_0$} & {$x_1$} & {$x_2$} & {$f(x_0)$} & {$f(x_1)$} & {$f(x_2)$} & {$f(x_0)f(x_2)$} & {$f(x_1)f(x_2)$} \\
@@ -261,7 +269,7 @@ $$x_2=\frac{1}{2}(x_0+x_1).$$
 
 \begin{table}[htb]
 	\centering
-	\begin{tabular}{|*{4}{S|}}
+	\begin{tabular}{*{4}{S[table-format=1e9, round-mode=places, round-precision=11]}}
 		\toprule
 		
 		{$x_k$} & {$f(x_k)$} & {$f'(x_k)$} & {$x_{k+1}$} \\
@@ -341,7 +349,7 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 
 \begin{table}[htb]
     \centering
-    \begin{tabular}{|*{4}{S[round-precision=5]|}}
+    \begin{tabular}{*{4}{S[table-format=1e10, round-mode=places, round-precision=11]}}
         \toprule
         
         {$x_k$} & {$f(x_k)$} & {$f'(x_k)$} & {$x_{k+1}$} \\
@@ -416,43 +424,41 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 \end{equation*}
 
 Преобразование матрицы:
-\begin{align*}
-    \begin{gmatrix}[v]
-        2 & 6 & -1 & -6 \\
-        5 & -1 & 2 & 35 \\
-        -3 & -4 & 1 & 11
-        \rowops
-            \mult{0}{\times 5} % умножить 1 строку на 5
-            \mult{1}{\times (-2)} % умножить 2 строку на -2
-            \add{1}{0} % прибавить 2 строку к 1
-    \end{gmatrix}
-    & \longrightarrow
-    \begin{gmatrix}[v]
-        0 & 32 & -9 & -100 \\
-        5 & -1 & 2 & 35 \\
-        -3 & -4 & 1 & 11
-        \rowops
-            \mult{1}{\times 3} % умножить 2 строку на 3
-            \mult{2}{\times 5} % умножить 3 строку на 5
-            \add{2}{1} % прибавить 3 строку к 2
-    \end{gmatrix} 
-    \longrightarrow{} \\ \longrightarrow{}
-    \begin{gmatrix}[v]
-        0 & 32 & -9 & -100 \\
-        0 & -23 & 11 & 160 \\
-        -3 & -4 & 1 & 11
-        \rowops
-            \mult{0}{\times 23} % умножить 1 строку на 23
-            \mult{1}{\times 32} % умножить 2 строку на 32
-            \add{1}{0} % прибавить 2 строку к 1
-    \end{gmatrix}
-    & \longrightarrow
-    \begin{gmatrix}[v]
-            0 & 0 & 146 & 2820 \\
-            0 & -23 & 11 & 160 \\
-            -3 & -4 & 1 & 11
-        \end{gmatrix}.
-\end{align*}
+\begin{multline*}
+	\begin{gmatrix}[v]
+		2 & 6 & -1 & -6 \\
+		5 & -1 & 2 & 35 \\
+		-3 & -4 & 1 & 11
+		\rowops
+		\mult{0}{\times 5} % умножить 1 строку на 5
+		\mult{1}{\times (-2)} % умножить 2 строку на -2
+		\add{1}{0} % прибавить 2 строку к 1
+	\end{gmatrix}~\longrightarrow
+	\begin{gmatrix}[v]
+		0 & 32 & -9 & -100 \\
+		5 & -1 & 2 & 35 \\
+		-3 & -4 & 1 & 11
+		\rowops
+		\mult{1}{\times 3} % умножить 2 строку на 3
+		\mult{2}{\times 5} % умножить 3 строку на 5
+		\add{2}{1} % прибавить 3 строку к 2
+	\end{gmatrix}~\longrightarrow 
+	\\ \longrightarrow
+	\begin{gmatrix}[v]
+		0 & 32 & -9 & -100 \\
+		0 & -23 & 11 & 160 \\
+		-3 & -4 & 1 & 11
+		\rowops
+		\mult{0}{\times 23} % умножить 1 строку на 23
+		\mult{1}{\times 32} % умножить 2 строку на 32
+		\add{1}{0} % прибавить 2 строку к 1
+	\end{gmatrix}~\longrightarrow
+	\begin{gmatrix}[v]
+		0 & 0 & 146 & 2820 \\
+		0 & -23 & 11 & 160 \\
+		-3 & -4 & 1 & 11
+	\end{gmatrix}.
+\end{multline*}
 
 Обратный ход:
 \begin{align*}
@@ -486,7 +492,7 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 
 \begin{table}[htb]
     \centering
-    \begin{tabular}{|*{3}{S[round-precision=8]|}}
+    \begin{tabular}{*{3}{S[table-format=1e10, round-mode=places, round-precision=11]}}
         \toprule
         
         {$x_1^{\{m\}}$} & {$x_2^{\{m\}}$} & {$x_3^{\{m\}}$} \\
@@ -560,7 +566,7 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 Необходимо найти приближение функции, заданной в~точках, многочленом, значения которого совпадают со~значениями функции в~указанных точках:
 
 \begin{center}
-	\begin{tabular}{SS}
+	\begin{tabular}{*{2}{S[table-alignment-mode=none]}}
 		\toprule
 		
 		$x$ & $y$ \\
@@ -581,34 +587,34 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 
 \begin{table}[htb]
     \centering
-    \begin{tabular}{|*{6}{c|}}
+    \begin{tabular}{*{6}{@{}c@{}}}
          \toprule
          
          $x$ & $y$ & $\Delta y$ & $\Delta^2 y$ & $\Delta^3 y$ & $\Delta^4 y$  \\
          
          \midrule
          
-         \begin{tabular}{S}
+         \begin{tabular}{@{}S}
               1  \\ 3 \\ 5 \\ 7 \\ 9
          \end{tabular}
          &
-         \begin{tabular}{S}
+         \begin{tabular}{@{}S@{}}
               6 \\ 10 \\ 8 \\ 12 \\ 14
          \end{tabular}
          &
-         \begin{tabular}{S}
+         \begin{tabular}{@{}S@{}}
               4 \\ -2 \\ 4 \\ 2
          \end{tabular}
          &
-         \begin{tabular}{S}
+         \begin{tabular}{@{}S@{}}
               -6 \\ 6 \\ -2
          \end{tabular}
          &
-         \begin{tabular}{S}
+         \begin{tabular}{@{}S@{}}
               12 \\ -8
          \end{tabular}
          &
-         \begin{tabular}{S}
+         \begin{tabular}{@{}S@{}}
          	-20
          \end{tabular}
          \\ 
@@ -678,7 +684,7 @@ f'(x) &= 2x\exp(x)+x^2\exp(x).
 
 \subsection*{Аналитическое выражение}
 
-Найти аналитическое выражение для~неопределённого интеграла $\int \sin(\ln(6x))\,dx$.
+Найти аналитическое выражение для~неопределённого интеграла $$\int \sin(\ln(6x))\,dx .$$
 
 \begin{multline*}
     \int\sin(\ln(6x))\,dx =
@@ -771,11 +777,11 @@ $$\int\limits_a^b f(x) \, dx \approx \frac{\Delta}{2} (f(x_0)+2f(x_1)+2f(x_2)+\d
 
 Разобьём интеграл на~$N=6$ равных промежутков. $\Delta x=\frac{b-a}{N}=\frac{8-2}{6}$.
 
-См.~талицу~\ref{sr3Table} на~стр.~\pageref{sr3Table}.
+См.~таблицу~\ref{sr3Table} на~стр.~\pageref{sr3Table}.
 
 \begin{table}[htb]
     \centering
-    \begin{tabular}{|*{3}{S}}
+    \begin{tabular}{*{3}{S[table-alignment-mode=none]}}
         \toprule
         
         $i$ & $x_i$ & $y_i$ \\ 
@@ -938,7 +944,7 @@ $$y_{n+1}=y_n+hf(t_n,\,y_n) .$$
 
 \begin{table}[htb]
     \centering
-    \begin{tabular}{|*{3}{S|}}
+    \begin{tabular}{*{3}{S}}
     	\toprule
         
         $n$ & $t_n$ & $y_n$ \\
@@ -978,7 +984,7 @@ $$y_{n+1}=y_n+hf(t_n,\,y_n) .$$
 
 \begin{table}[htb]
     \centering
-    \begin{tabular}{|*{3}{S|}}
+    \begin{tabular}{*{3}{S[table-format=2.2]}}
     	\toprule
     	
         $n$ & $t_n$ & $y_n$ \\
